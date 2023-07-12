@@ -129,6 +129,7 @@ public class AVPlayerManager: UIView {
         
         self.view = view
         self.isLiveStream = isLiveStream
+        self.isPause = false
         
         super.init(frame: .zero)
     }
@@ -335,8 +336,9 @@ public class AVPlayerManager: UIView {
         playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         
         playAndPauseButtonForMiniPlayer.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        
+
         isPause = !isPause
+
         
     }
     
@@ -635,13 +637,6 @@ public class AVPlayerManager: UIView {
                 self?.slider.minimumValue = 0
                 self?.slider.maximumValue = Float(currentItem.duration.seconds)
 
-                
-                print("self?.isBuffering: ", self?.isBuffering)
-               
-                print("self?.isSliderDragStart: ", self?.isSliderDragStart)
-                print("self?.isPause: ", self?.isPause)
-                
-                
                 if self?.isBuffering == false && self?.isSliderDragStart == false && self?.isPause == false {
                     self?.slider.setValue(Float(time.seconds), animated: true)
                     self?.playerTime.text = time.durationText
