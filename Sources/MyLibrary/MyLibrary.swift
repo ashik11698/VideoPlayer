@@ -80,6 +80,9 @@ public class AVPlayerManager: UIView {
     /// To Track the dragging state of slider
     var isSliderDragStart = false
     
+    /// Track the first time app run
+    var isFirsTimeRun = true
+    
     /// Store the position of selected Video
     var selectedVideo = 0
     
@@ -129,7 +132,6 @@ public class AVPlayerManager: UIView {
         
         self.view = view
         self.isLiveStream = isLiveStream
-        self.isPause = false
         
         super.init(frame: .zero)
     }
@@ -337,7 +339,11 @@ public class AVPlayerManager: UIView {
         
         playAndPauseButtonForMiniPlayer.setImage(UIImage(systemName: "play.fill"), for: .normal)
 
-        isPause = !isPause
+        if !isFirsTimeRun {
+            isPause = !isPause
+        }
+        
+        isFirsTimeRun = false
 
         
     }
