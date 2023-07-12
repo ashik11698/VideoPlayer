@@ -623,7 +623,7 @@ public class AVPlayerManager: UIView {
     
     // MARK: - Configure the Slider
     /// Did all the tasks of slider here
-    func configureSlider(color: UIColor) {
+    public func configureSlider(color: UIColor) {
         
         slider.tintColor = color
         
