@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "MyLibrary",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v15)
     ],
