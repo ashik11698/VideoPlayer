@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  AVPlayerDemo
+
+  Created by Mac on 26/6/23.
+  
+*/
+
+
+"Speed" = "スピード";
+"Quality" = "品質";
+"Share" = "共有";
+"Report" = "報告";
+"Cancel" = "キャンセル";
+"Settings" = "設定";
+"Normal" = "普通";
+"Auto" = "自動";
+"Select any" = "どれかを選択してください";
