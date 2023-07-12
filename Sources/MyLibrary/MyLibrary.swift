@@ -635,6 +635,13 @@ public class AVPlayerManager: UIView {
                 self?.slider.minimumValue = 0
                 self?.slider.maximumValue = Float(currentItem.duration.seconds)
 
+                
+                print("self?.isBuffering: ", self?.isBuffering)
+               
+                print("self?.isSliderDragStart: ", self?.isSliderDragStart)
+                print("self?.isPause: ", self?.isPause)
+                
+                
                 if self?.isBuffering == false && self?.isSliderDragStart == false && self?.isPause == false {
                     self?.slider.setValue(Float(time.seconds), animated: true)
                     self?.playerTime.text = time.durationText
