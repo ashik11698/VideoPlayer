@@ -2,7 +2,7 @@
 import UIKit
 import AVKit
 
-class MyLibrary: UIView {
+class AVPlayerManager: UIView {
     
     /// AVPlayerUIDesignManager initializer
     var avPlayerUIDesignManager = AVPlayerUIDesignManager()
@@ -116,7 +116,7 @@ class MyLibrary: UIView {
     var playList = [Urls.m3u8Video1, Urls.m3u8Video2, Urls.m3u8Video3, Urls.m3u8Video4, Urls.m3u8Video5, Urls.m3u8Video6, Urls.BigBuckBunny]
 
     
-    static let shared = MyLibrary()
+    static let shared = AVPlayerManager()
     
     
     init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false) {
@@ -894,7 +894,7 @@ class MyLibrary: UIView {
 }
 
 /// Extension For Preview
-extension MyLibrary: SeekPreviewDelegate {
+extension AVPlayerManager: SeekPreviewDelegate {
     
     /// Function of SeekPreviewDelegate
     func getSeekPreview(value: Float) -> UIImage? {
@@ -938,7 +938,7 @@ extension MyLibrary: SeekPreviewDelegate {
 
 
 /// Extension for set the positions of components of playerView
-extension MyLibrary {
+extension AVPlayerManager {
 
     // MARK: - Set icons of playAndPauseBtnOutlet
     /// This is a button to pause and play video. This can toggle from pause to play and vice versa
@@ -952,7 +952,7 @@ extension MyLibrary {
     @objc func skipVideoInForward() {
         
         //skipTimeForward(seconds: 10)
-        MyLibrary.shared.skipTimeForward(seconds: 10, avPlayer: avPlayer ?? AVPlayer())
+        AVPlayerManager.shared.skipTimeForward(seconds: 10, avPlayer: avPlayer ?? AVPlayer())
         setPlayerTime()
         
     }
@@ -962,7 +962,7 @@ extension MyLibrary {
     @objc func skipVideoInBackward() {
         
         //skipTimeBackward(seconds: 10)
-        MyLibrary.shared.skipTimeBackward(seconds: 10, avPlayer: avPlayer ?? AVPlayer())
+        AVPlayerManager.shared.skipTimeBackward(seconds: 10, avPlayer: avPlayer ?? AVPlayer())
         setPlayerTime()
         
     }
@@ -977,7 +977,7 @@ extension MyLibrary {
                 self.unhideMiniPlayerButtons()
                 self.miniPlayerUIView.isHidden = false
                 
-                (self.crossButton, self.playAndPauseButtonForMiniPlayer) = MyLibrary.shared.configureMiniPlayer(
+                (self.crossButton, self.playAndPauseButtonForMiniPlayer) = AVPlayerManager.shared.configureMiniPlayer(
                     view: self.miniPlayerUIView,
                     playerView: self.playerView,
                     playerLayer: self.playerLayer,
@@ -1173,7 +1173,7 @@ extension MyLibrary {
 
 
 /// Extension for UINavigationControllerDelegate
-extension MyLibrary: UINavigationControllerDelegate {
+extension AVPlayerManager: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if let previousViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
