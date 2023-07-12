@@ -18,9 +18,7 @@ class ActionSheet {
     /// - Returns: returns UIAlertController to show sheet in viewController where the functions called
     func speedActionSheet(avPlayer: AVPlayer) -> UIAlertController {
         
-        //let title = NSLocalizedString("Speed", comment: "")
-        let title = NSLocalizedString("Speed", bundle: Bundle.module, comment: "a comment")
-        
+        let title = NSLocalizedString("Speed", comment: "")
         let selectAny = NSLocalizedString("Select any", comment: "")
         let normal = NSLocalizedString("Normal", comment: "")
         let cancel = NSLocalizedString("Cancel", comment: "")
