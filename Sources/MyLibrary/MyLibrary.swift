@@ -154,7 +154,7 @@ public class AVPlayerManager: UIView {
     }
     
     
-    func setUpPlayer() {
+    public func setUpPlayer() {
         
         avPlayerUIDesignManager = AVPlayerUIDesignManager(playerView: playerView, playAndPauseButton: playAndPauseButton, forwardSkipButton: forwardSkipButton, backwardSkipButton: backwardSkipButton, activityIndicator: activityIndicator, miniPlayerButton: miniPlayerButton, settingButton: settingButton, progressView: progressView, fullScreenButton: fullScreenButton, slider: slider, playerTime: playerTime, playerTotalDuration: playerTotalDuration, liveLabel: liveLabel, liveRedCircleImage: liveRedCircleImage, liveStack: liveStack, nextVideoButton: nextVideoButton, previousVideoButton: previousVideoButton)
         
