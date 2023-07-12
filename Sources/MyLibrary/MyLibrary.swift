@@ -2,7 +2,7 @@
 import UIKit
 import AVKit
 
-class AVPlayerManager: UIView {
+public class AVPlayerManager: UIView {
     
     /// AVPlayerUIDesignManager initializer
     var avPlayerUIDesignManager = AVPlayerUIDesignManager()
@@ -119,7 +119,7 @@ class AVPlayerManager: UIView {
     static let shared = AVPlayerManager()
     
     
-    init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false) {
+    public init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false) {
         if navigationController != nil {
             self.navigationController = navigationController
         }
@@ -140,7 +140,7 @@ class AVPlayerManager: UIView {
     
     
     /// It notifies when UIView removed/added
-    override func willMove(toWindow newWindow: UIWindow?) {
+    public override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         
         if newWindow == nil {
@@ -342,7 +342,7 @@ class AVPlayerManager: UIView {
     
     // MARK: - Executes when phone orientation changes
     /// This is to observe the phone orientation
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         debugPrint("Orientation changed")
@@ -897,7 +897,7 @@ class AVPlayerManager: UIView {
 extension AVPlayerManager: SeekPreviewDelegate {
     
     /// Function of SeekPreviewDelegate
-    func getSeekPreview(value: Float) -> UIImage? {
+    public func getSeekPreview(value: Float) -> UIImage? {
 
         guard let asset = avPlayer?.currentItem?.asset else {return nil}
 
@@ -1175,7 +1175,7 @@ extension AVPlayerManager {
 /// Extension for UINavigationControllerDelegate
 extension AVPlayerManager: UINavigationControllerDelegate {
     
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if let previousViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
            !navigationController.viewControllers.contains(previousViewController) {
             // The previous view controller is not in the navigation stack anymore.
