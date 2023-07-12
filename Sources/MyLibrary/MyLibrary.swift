@@ -2,7 +2,7 @@
 import UIKit
 import AVKit
 
-class AVPlayerManager: UIView {
+class MyLibrary: UIView {
     
     /// AVPlayerUIDesignManager initializer
     var avPlayerUIDesignManager = AVPlayerUIDesignManager()
