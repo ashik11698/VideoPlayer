@@ -335,11 +335,12 @@ public class AVPlayerManager: UIView {
     /// Executes this function when app comes from background to foreground
     @objc func activeFromBackground() {
         
-        playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        
-        playAndPauseButtonForMiniPlayer.setImage(UIImage(systemName: "play.fill"), for: .normal)
-
         if !isFirsTimeRun {
+            
+            playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            
+            playAndPauseButtonForMiniPlayer.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            
             isPause = !isPause
         }
         
