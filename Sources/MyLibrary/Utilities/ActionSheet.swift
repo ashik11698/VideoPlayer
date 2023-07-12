@@ -26,23 +26,23 @@ class ActionSheet {
         let speedAlert = UIAlertController(title: title, message: selectAny, preferredStyle: .actionSheet)
         
         speedAlert.addAction(UIAlertAction(title: "6x", style: .default , handler:{ (UIAlertAction)in
-            AVPlayerManager.shared.setSpeedToAVPlayer(rate: 6.0, avPlayer: avPlayer)
+            MyLibrary.shared.setSpeedToAVPlayer(rate: 6.0, avPlayer: avPlayer)
         }))
         
         speedAlert.addAction(UIAlertAction(title: "4x", style: .default , handler:{ (UIAlertAction)in
-            AVPlayerManager.shared.setSpeedToAVPlayer(rate: 4.0, avPlayer: avPlayer)
+            MyLibrary.shared.setSpeedToAVPlayer(rate: 4.0, avPlayer: avPlayer)
         }))
 
         speedAlert.addAction(UIAlertAction(title: "2x", style: .default , handler:{ (UIAlertAction)in
-            AVPlayerManager.shared.setSpeedToAVPlayer(rate: 2.0, avPlayer: avPlayer)
+            MyLibrary.shared.setSpeedToAVPlayer(rate: 2.0, avPlayer: avPlayer)
         }))
         
         speedAlert.addAction(UIAlertAction(title: normal, style: .default, handler:{ (UIAlertAction)in
-            AVPlayerManager.shared.setSpeedToAVPlayer(rate: 1.0, avPlayer: avPlayer)
+            MyLibrary.shared.setSpeedToAVPlayer(rate: 1.0, avPlayer: avPlayer)
         }))
         
         speedAlert.addAction(UIAlertAction(title: "0.1x", style: .default, handler:{ (UIAlertAction)in
-            AVPlayerManager.shared.setSpeedToAVPlayer(rate: 0.1, avPlayer: avPlayer)
+            MyLibrary.shared.setSpeedToAVPlayer(rate: 0.1, avPlayer: avPlayer)
         }))
         speedAlert.addAction(UIAlertAction(title: cancel, style: .cancel, handler:{ (UIAlertAction)in
             
