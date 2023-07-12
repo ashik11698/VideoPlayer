@@ -112,7 +112,6 @@ public class AVPlayerManager: UIView {
     var view = UIView()
     
     /// Navigation Controller
-//    var navigationController = UINavigationController()
     var navigationController: UINavigationController?
     
     /// PlayList
@@ -1190,8 +1189,8 @@ extension AVPlayerManager: UINavigationControllerDelegate {
             // The previous view controller is not in the navigation stack anymore.
             // You can perform any cleanup or deallocation tasks here.
             
-//            stopPlayerAndPlayerObserver()
-//            NotificationCenter.default.removeObserver(self)
+            stopPlayerAndPlayerObserver()
+            NotificationCenter.default.removeObserver(self)
 
             // For example, you could call a deinitializer or release resources.
             previousViewController.removeFromParent()
