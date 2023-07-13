@@ -78,6 +78,8 @@ let avPlayerManager = AVPlayerManager(navigationController: navigationController
 ```
 
 Or,
+
+```
 let avPlayerManager = AVPlayerManager(navigationController: nil, view: view, isLiveStream: false)
 ```
 
