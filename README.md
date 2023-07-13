@@ -6,7 +6,7 @@ A description of this package.
 
 <-------------------------->
 
-import MyLibrary
+import VideoPlayer
 
 let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false)
         
