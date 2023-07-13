@@ -1,6 +1,6 @@
 # VideoPlayer
 
-A description of this package.
+This is a library of custom video player for iOS devices. This provides services for both live stream and pre-recorded videos. 
 
 ## Features:
 ### For Live Stream:
@@ -67,9 +67,35 @@ A description of this package.
 import VideoPlayer
 ```
 
-    
+## How to use
+initialize the AVPlayerManager with following parameters
+- navigationController: This is optional. If there isn't any navigationController, then pass nil instead of it.
+- view: Pass the view(UIView), where the player will be placed. 
+- isLiveStream: This is boolean. Pass 'true' if it is a live stream, else pass 'false' if it is pre-recorded video.
 
-### Sample code of using this library:
+```
+let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false)
+```
+
+Or,
+let avPlayerManager = AVPlayerManager(navigationController: nil, view: view, isLiveStream: false)
+```
+
+
+Add the initialized constant/variable as a subview of the view the player will be visible.
+
+```
+view.addSubview(avPlayerManager)
+```
+
+Call the 'setUpPlayer' method/function to configure all the things and play the video. 
+
+```
+avPlayerManager.setUpPlayer()
+```
+
+
+## Sample code of using this library
 
 ```
 import VideoPlayer
