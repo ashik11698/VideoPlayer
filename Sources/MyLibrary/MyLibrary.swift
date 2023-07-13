@@ -144,9 +144,7 @@ public class AVPlayerManager: UIView {
     /// It notifies when UIView removed/added
     public override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        
-        isFirsTimeRun = false
-        
+
         if newWindow == nil {
             // UIView is being removed from the window or hidden
             // Perform your cleanup or actions here
@@ -210,10 +208,7 @@ public class AVPlayerManager: UIView {
         playerView.addGestureRecognizer(gesture)
 
         /// When app become active from background
-        if !isFirsTimeRun {
-            NotificationCenter.default.addObserver(self, selector: #selector(self.activeFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
-        }
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.activeFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.activeFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
 
         /// Observe if video is finished or not
         NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avPlayer?.currentItem)
