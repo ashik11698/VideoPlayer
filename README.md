@@ -3,23 +3,23 @@
 A description of this package.
 
 ## Features:
-### For Live Stream:
-- [X] Play/Resume
-- [X] Pause
-- [X] Full screen mode using button
-- [X] Full screen in landscape
-- [X] Buffer indicator
-- [X] Settings: 
-    - [ ] Qaulity
-    - [ ] Share
-    - [ ] Report
-- [X] Play next Video
-- [X] Play previous Video
-- [X] Mini Player
-    - [X] Revert to original by touching the player
+#### For Live Stream:
+    - [X] Play/Resume
     - [X] Pause
-    - [X] CCancel
-- [X] Visible buttons when touch the player and invisible buttons after 5 seconds of last touch
+    - [X] Full screen mode using button
+    - [X] Full screen in landscape
+    - [X] Buffer indicator
+    - [X] Settings: 
+        - [ ] Qaulity
+        - [ ] Share
+        - [ ] Report
+    - [X] Play next Video
+    - [X] Play previous Video
+    - [X] Mini Player
+        - [X] Revert to original by touching the player
+        - [X] Pause
+        - [X] CCancel
+    - [X] Visible buttons when touch the player and invisible buttons after 5 seconds of last touch
         
     ### For Pre-recorded Videos:
             - [X] Checkbox checked Play/Resume
