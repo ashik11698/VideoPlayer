@@ -3,48 +3,48 @@
 A description of this package.
 
 ## Features:
-    ###[x] For Live Stream:
-        [x] Play/Resume
-        [x] Pause
-        [x] Full screen mode using button
-        [x] Full screen in landscape
-        [x] Buffer indicator
-        [x] Settings: 
-            [x] Qaulity
-            [x] Share
-            [x] Report
-        [x] Play next Video
-        [x] Play previous Video
-        [x] Mini Player
-            [x] Revert to original by touching the player
-            [x] Pause
-            [x] Cancel
-        [x] Visible buttons when touch the player and invisible buttons after 5 seconds of last touch
+    ### For Live Stream:
+            - [X] Checkbox checked Play/Resume
+            - [X] Checkbox checked Pause
+            - [X] Checkbox checked Full screen mode using button
+            - [X] Checkbox checked Full screen in landscape
+            - [X] Checkbox checked Buffer indicator
+            - [X] Checkbox checked Settings: 
+                - [] Qaulity
+                - [] Share
+                - [] Report
+            - [X] Checkbox checked Play next Video
+            - [X] Checkbox checked Play previous Video
+            - [X] Checkbox checked Mini Player
+                - [X] Checkbox checked Revert to original by touching the player
+                - [X] Checkbox checked Pause
+                - [X] Checkbox checked Cancel
+            - [X] Checkbox checked Visible buttons when touch the player and invisible buttons after 5 seconds of last touch
         
-    ###[x] For Pre-recorded Videos:
-        [x] Play/Resume
-        [x] Pause
-        [x] Full screen mode using button
-        [x] Full screen in landscape
-        [x] Buffer indicator
-        [x] Settings: 
-            [x] Speed
-            [x] Qaulity
-            [x] Share
-            [x] Report
-        [x] Slider
-        [x] Total duration
-        [x] Live timer
-        [x] Preview
-        [x] Backward skipping 
-        [x] Forward skipping
-        [x] Play next Video
-        [x] Play previous Video
-        [x] Mini Player
-            [x] Revert to original by touching the player
-            [x] Pause
-            [x] Cancel
-            [x] Visible buttons when touch the player and invisible buttons after 5 seconds of last touch
+    ### For Pre-recorded Videos:
+            - [X] Checkbox checked Play/Resume
+            - [X] Checkbox checked Pause
+            - [X] Checkbox checked Full screen mode using button
+            - [X] Checkbox checked Full screen in landscape
+            - [X] Checkbox checked Buffer indicator
+            - [X] Checkbox checked Settings: 
+                - [X] Speed
+                - [] Qaulity
+                - [] Share
+                - [] Report
+            - [X] Checkbox checked Slider
+            - [X] Checkbox checked Total duration
+            - [X] Checkbox checked Live timer
+            - [X] Checkbox checked Preview
+            - [X] Checkbox checked Backward skipping 
+            - [X] Checkbox checked Forward skipping
+            - [X] Checkbox checked Play next Video
+            - [X] Checkbox checked Play previous Video
+            - [X] Checkbox checked Mini Player
+                - [X] Checkbox checked Revert to original by touching the player
+                - [X] Checkbox checked Pause
+                - [X] Checkbox checked Cancel
+            - [X] Checkbox checked Visible buttons when touch the player and invisible buttons after 5 seconds of last touch
     
 
 ### Sample code of using this library is given below:
