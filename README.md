@@ -53,7 +53,8 @@ A description of this package.
 - 3. press the + button
 - 4. Enter the Package URL: https://github.com/ashik11698/VideoPlayer.git
 - 5. Select 'VideoPlayer'and press add package.
-####Or,
+
+#### Or,
 - 1. In Xcode, go to File
 - 2. Click on 'Add Packages...'
 - 3. Enter the Package URL: https://github.com/ashik11698/VideoPlayer.git
