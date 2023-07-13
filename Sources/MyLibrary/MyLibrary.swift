@@ -132,6 +132,8 @@ public class AVPlayerManager: UIView {
         self.view = view
         self.isLiveStream = isLiveStream
         
+        self.isFirsTimeRun = false
+        
         super.init(frame: .zero)
     }
     
