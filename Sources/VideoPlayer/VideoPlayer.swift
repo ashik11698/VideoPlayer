@@ -103,7 +103,7 @@ public class AVPlayerManager: UIView {
     var avPlayer: AVPlayer?
     
     var preview = SeekPreview()
-    var images: [ Double : UIImage ] = [:]
+    var images: [ Int : UIImage ] = [:]
     
     /// For hiding button after a certain time (5 seconds)
     var workItem: DispatchWorkItem?
@@ -907,16 +907,8 @@ extension AVPlayerManager: SeekPreviewDelegate {
     /// Function of SeekPreviewDelegate
     public func getSeekPreview(value: Float) -> UIImage? {
 
-        guard let asset = avPlayer?.currentItem?.asset else {return nil}
-
-        let times = images.keys
-        if times.count == 0 {
-            return nil
-        }
-
-        let seconds = Double(value) * asset.duration.seconds
-        let closest = times.enumerated().min( by: { abs($0.1 - seconds) < abs($1.1 - seconds) } )!
-        let image = images[closest.element]
+        let close = Utils.shared.closestInteger(v: Int(slider.value), arr: Array(images.keys))
+        let image = images[close!]
 
         return image
 
@@ -932,11 +924,19 @@ extension AVPlayerManager: SeekPreviewDelegate {
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         imageGenerator.maximumSize = CGSize(width: 150, height: 80)
         let seconds = asset.duration.seconds
+        
+        var nsValueArray: [NSValue] = []
 
-        imageGenerator.generateCGImagesAsynchronously(forTimes: Array(1...99).map{ NSValue(time:CMTimeMake(value: $0 * Int64(seconds), timescale: 100))  }) { (requestedTime, cgImage, actualTime, result, error) in
+        for i in 0..<Int(seconds) {
+            let time = CMTimeMake(value: Int64(i), timescale: 1)
+            let nsValue = NSValue(time: time)
+            nsValueArray.append(nsValue)
+        }
+        
+        imageGenerator.generateCGImagesAsynchronously(forTimes: nsValueArray) { (requestedTime, cgImage, actualTime, result, error) in
             if let image = cgImage {
                 DispatchQueue.main.async {
-                    self.images[actualTime.seconds] = UIImage(cgImage: image)
+                    self.images[Int(actualTime.seconds)] = UIImage(cgImage: image)
                 }
             }
         }
