@@ -102,8 +102,10 @@ public class AVPlayerManager: UIView {
     var playerLayer = AVPlayerLayer()
     var avPlayer: AVPlayer?
     
+    /// For Preview
     var preview = SeekPreview()
     var images: [ Int : UIImage ] = [:]
+    var imageGenerator: AVAssetImageGenerator?
     
     /// For hiding button after a certain time (5 seconds)
     var workItem: DispatchWorkItem?
@@ -922,12 +924,14 @@ extension AVPlayerManager: SeekPreviewDelegate {
     /// Generate images according to time
     func generateImages() {
         self.images = [:]
+        imageGenerator?.cancelAllCGImageGeneration()
+        
         guard let asset = avPlayer?.currentItem?.asset else {
             return
         }
 
-        let imageGenerator = AVAssetImageGenerator(asset: asset)
-        imageGenerator.maximumSize = CGSize(width: 150, height: 80)
+        imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator?.maximumSize = CGSize(width: 150, height: 80)
         let seconds = asset.duration.seconds
         
         var nsValueArray: [NSValue] = []
@@ -938,7 +942,7 @@ extension AVPlayerManager: SeekPreviewDelegate {
             nsValueArray.append(nsValue)
         }
         
-        imageGenerator.generateCGImagesAsynchronously(forTimes: nsValueArray) { (requestedTime, cgImage, actualTime, result, error) in
+        imageGenerator?.generateCGImagesAsynchronously(forTimes: nsValueArray) { (requestedTime, cgImage, actualTime, result, error) in
             if let image = cgImage {
                 DispatchQueue.main.async {
                     self.images[Int(actualTime.seconds)] = UIImage(cgImage: image)
