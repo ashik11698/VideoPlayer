@@ -195,15 +195,15 @@ class Utils {
     ///   - v: this is the given integer which will be compared with the array
     ///   - arr: This is the array of integers
     /// - Returns: returns the closest ineteger
-    func closestInteger(v: Int, arr: [Int]) -> Int? {
+    func getClosestInteger(value: Int, arr: [Int]) -> Int? {
         var closest: Int? = nil
-        var minDiff = Int.max
+        var minimumDifference = Int.max
 
-        for num in arr {
-            let diff = abs(v - num)
-            if diff < minDiff {
-                minDiff = diff
-                closest = num
+        for number in arr {
+            let difference = abs(value - number)
+            if difference < minimumDifference {
+                minimumDifference = difference
+                closest = number
             }
         }
 

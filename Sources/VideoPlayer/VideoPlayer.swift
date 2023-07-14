@@ -907,7 +907,7 @@ extension AVPlayerManager: SeekPreviewDelegate {
     /// Function of SeekPreviewDelegate
     public func getSeekPreview(value: Float) -> UIImage? {
 
-        let close = Utils.shared.closestInteger(v: Int(slider.value), arr: Array(images.keys))
+        let close = Utils.shared.getClosestInteger(value: Int(slider.value), arr: Array(images.keys))
         let image = images[close!]
 
         return image
