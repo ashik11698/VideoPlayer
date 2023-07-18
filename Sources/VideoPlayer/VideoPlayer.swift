@@ -130,7 +130,7 @@ public class AVPlayerManager: UIView {
     static let shared = AVPlayerManager()
     
     
-    public init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false, playList: [URL?] = [Urls.m3u8Video1, Urls.m3u8Video3, Urls.m3u8Video6, Urls.BigBuckBunny]) {
+    public init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false, playList: [URL?]? = [Urls.m3u8Video1, Urls.m3u8Video3, Urls.m3u8Video6, Urls.BigBuckBunny]) {
         if navigationController != nil {
             self.navigationController = navigationController
         }
