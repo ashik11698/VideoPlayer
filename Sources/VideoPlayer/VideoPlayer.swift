@@ -87,9 +87,6 @@ public class AVPlayerManager: UIView {
     /// To Track the dragging state of slider
     var isSliderDragStart = false
     
-    /// Track the first time app run
-    var isFirsTimeRun = true
-    
     /// Store the position of selected Video
     var selectedVideo = 0
     
@@ -217,8 +214,8 @@ public class AVPlayerManager: UIView {
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.playerViewTouchGesture (_:)))
         playerView.addGestureRecognizer(gesture)
 
-        /// When app become active from background
-        NotificationCenter.default.addObserver(self, selector: #selector(self.activeFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        /// When app moves to background
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
 
         /// Observe if video is finished or not
         NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avPlayer?.currentItem)
@@ -344,22 +341,16 @@ public class AVPlayerManager: UIView {
     }
     
     
-    /// Executes this function when app comes from background to foreground
-    @objc func activeFromBackground() {
+    /// Executes this function when the app moves to background
+    @objc func appMovedToBackground() {
         
-        if !isFirsTimeRun {
-            
-            playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            
-            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            
-            isPause = !isPause
-        }
+        playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         
-        isFirsTimeRun = false
-
+        miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         
+        isPause = !isPause
     }
+    
     
     // MARK: - Executes when phone orientation changes
     /// This is to observe the phone orientation
