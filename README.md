@@ -18,7 +18,7 @@ This is a library of custom video player for iOS devices. This provides services
 - [X] Mini Player
     - [X] Revert to original by touching the player
     - [X] Pause
-    - [X] CCancel
+    - [X] Cancel
 - [X] Visible buttons when touch the player and invisible buttons after 5 seconds of last touch
         
 ### For Pre-recorded Videos:
@@ -48,17 +48,17 @@ This is a library of custom video player for iOS devices. This provides services
 
 
 ## Installation
-- 1. In Xcode, select your project in the Project Editor
-- 2. Go to the Package Dependencies tab
-- 3. press the + button
-- 4. Enter the Package URL: https://github.com/ashik11698/VideoPlayer.git
-- 5. Select 'VideoPlayer'and press add package.
+- In Xcode, select your project in the Project Editor
+- Go to the Package Dependencies tab
+- press the + button
+- Enter the Package URL: https://github.com/ashik11698/VideoPlayer.git
+- Select 'VideoPlayer'and press add package.
 
 #### Or,
-- 1. In Xcode, go to File
-- 2. Click on 'Add Packages...'
-- 3. Enter the Package URL: https://github.com/ashik11698/VideoPlayer.git
-- 4. Select 'VideoPlayer'and press add package.
+- In Xcode, go to File
+- Click on 'Add Packages...'
+- Enter the Package URL: https://github.com/ashik11698/VideoPlayer.git
+- Select 'VideoPlayer'and press add package.
 
 
 ## Import
