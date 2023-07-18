@@ -72,7 +72,7 @@ initialize the AVPlayerManager with following parameters
 - navigationController: This is optional. If there isn't any navigationController, then pass nil instead of it.
 - view: Pass the view(UIView), where the player will be placed. 
 - isLiveStream: This is boolean. Pass 'true' if it is a live stream, else pass 'false' if it is pre-recorded video.
-- playList: This is a list of urls, which will be played by the player. This is optional. User can send their own playList [URL?]. Pass nil if there is no playList, player will play the default playList in that case. 
+- playList: This is a list of urls, which will be played by the player. This is optional. User can send their own playList [URL?]. Avoid this parameter if there is no playList, player will play the default playList in that case. 
 
 ```
 let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false)
@@ -84,6 +84,13 @@ Or,
 let avPlayerManager = AVPlayerManager(navigationController: nil, view: view, isLiveStream: false)
 ```
 
+Or,
+
+```
+let playList = [Urls.m3u8Video1, Urls.m3u8Video2, Urls.m3u8Video3]
+
+let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false, playList: playList)
+```
 
 Add the initialized constant/variable as a subview of the view the player will be visible.
 
@@ -110,6 +117,19 @@ view.addSubview(avPlayerManager)
 avPlayerManager.setUpPlayer()
 ```
 
+Or,
+
+```
+import VideoPlayer
+
+let playList = [Urls.m3u8Video1, Urls.m3u8Video2, Urls.m3u8Video3]
+
+let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false, playList: playList)
+        
+view.addSubview(avPlayerManager)
+        
+avPlayerManager.setUpPlayer()
+```
 
 ## Open Source Used:
 
