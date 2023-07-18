@@ -2,7 +2,8 @@
 //  CMTime_Ext.swift
 //  AVPlayerDemo
 //
-//  Created by Mac on 21/6/23.
+//  Created by Md. Ashikur Rahman on 21/6/23.
+//  Copyright © 2023 BJIT Ltd. All rights reserved.
 //
 
 import UIKit

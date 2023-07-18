@@ -1,3 +1,10 @@
+//
+//  AVPlayerManager.swift
+//  AVPlayerDemo
+//
+//  Created by Md. Ashikur Rahman on 5/6/23.
+//  Copyright © 2023 BJIT Ltd. All rights reserved.
+//
 
 import UIKit
 import AVKit
@@ -96,7 +103,7 @@ public class AVPlayerManager: UIView {
     
     /// Mini Player Buttons and UIView
     var crossButton = UIButton()
-    var playAndPauseButtonForMiniPlayer = UIButton()
+    var miniPlayerPlayAndPauseButton = UIButton()
     var miniPlayerUIView = UIView()
     
     var playerLayer = AVPlayerLayer()
@@ -185,7 +192,7 @@ public class AVPlayerManager: UIView {
         miniPlayerUIView = Utils.shared.createUIView(view: self.view)
         
         /// Create Play And Pause Button For MiniPlayer
-        self.playAndPauseButtonForMiniPlayer = Utils.shared.createButton(
+        self.miniPlayerPlayAndPauseButton = Utils.shared.createButton(
             tintColor: UIColor.black,
             title: "",
             imageName: "pause")
@@ -271,7 +278,6 @@ public class AVPlayerManager: UIView {
         view.addSubview(playerView)
         
         view.backgroundColor = UIColor.lightGray
-//        view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: 100)
         view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/7)
         view.frame.origin = minimizedOrigin!
         
@@ -340,7 +346,7 @@ public class AVPlayerManager: UIView {
             
             playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             
-            playAndPauseButtonForMiniPlayer.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             
             isPause = !isPause
         }
@@ -764,7 +770,7 @@ public class AVPlayerManager: UIView {
     /// Hides the buttons of mini player
     func hideMiniPlayerButtons() {
         
-        self.playAndPauseButtonForMiniPlayer.isHidden = true
+        self.miniPlayerPlayAndPauseButton.isHidden = true
         self.crossButton.isHidden = true
         
     }
@@ -774,7 +780,7 @@ public class AVPlayerManager: UIView {
     /// Unhide Mini Player Buttons
     func unhideMiniPlayerButtons() {
         
-        self.playAndPauseButtonForMiniPlayer.isHidden = false
+        self.miniPlayerPlayAndPauseButton.isHidden = false
         self.crossButton.isHidden = false
         
     }
@@ -788,13 +794,13 @@ public class AVPlayerManager: UIView {
             avPlayer?.pause()
             
             playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            playAndPauseButtonForMiniPlayer.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         }
         else {
             avPlayer?.play()
             
             playAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            playAndPauseButtonForMiniPlayer.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         }
         
         isPause = !isPause
@@ -994,12 +1000,12 @@ extension AVPlayerManager {
                 self.unhideMiniPlayerButtons()
                 self.miniPlayerUIView.isHidden = false
                 
-                (self.crossButton, self.playAndPauseButtonForMiniPlayer) = AVPlayerManager.shared.configureMiniPlayer(
+                (self.crossButton, self.miniPlayerPlayAndPauseButton) = AVPlayerManager.shared.configureMiniPlayer(
                     view: self.miniPlayerUIView,
                     playerView: self.playerView,
                     playerLayer: self.playerLayer,
                     crossButton: self.crossButton,
-                    playAndPauseButtonForMiniPlayer: self.playAndPauseButtonForMiniPlayer,
+                    playAndPauseButtonForMiniPlayer: self.miniPlayerPlayAndPauseButton,
                     minimizedOrigin: self.minimizedOrigin,
                     buttonWidth: Int(self.playAndPauseButton.bounds.width),
                     buttonHeight: Int(self.playAndPauseButton.bounds.height)
@@ -1007,7 +1013,7 @@ extension AVPlayerManager {
                 
                 self.crossButton.addTarget(self, action:#selector(self.closeMiniPlayer), for: .touchUpInside)
                 
-                self.playAndPauseButtonForMiniPlayer.addTarget(self, action:#selector(self.pauseAndPlayMiniPlayerAction), for: .touchUpInside)
+                self.miniPlayerPlayAndPauseButton.addTarget(self, action:#selector(self.pauseAndPlayMiniPlayerAction), for: .touchUpInside)
                 
                 self.isMinimize = true
             }

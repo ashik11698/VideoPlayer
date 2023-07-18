@@ -2,7 +2,8 @@
 //  Urls.swift
 //  AVPlayerDemo
 //
-//  Created by Mac on 12/6/23.
+//  Created by Md. Ashikur Rahman on 12/6/23.
+//  Copyright © 2023 BJIT Ltd. All rights reserved.
 //
 
 import Foundation

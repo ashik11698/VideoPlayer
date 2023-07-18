@@ -2,7 +2,8 @@
 //  ActionSheet.swift
 //  AVPlayerDemo
 //
-//  Created by Mac on 15/6/23.
+//  Created by Md. Ashikur Rahman on 15/6/23.
+//  Copyright © 2023 BJIT Ltd. All rights reserved.
 //
 
 import UIKit
@@ -47,9 +48,6 @@ class ActionSheet {
         speedAlert.addAction(UIAlertAction(title: cancel, style: .cancel, handler:{ (UIAlertAction)in
             
         }))
-        
-        //uncomment for iPad Support
-        //speedAlert.popoverPresentationController?.sourceView = self.view
         
         return speedAlert
     }
@@ -96,10 +94,7 @@ class ActionSheet {
         qualityAlert.addAction(UIAlertAction(title: cancel, style: .cancel, handler:{ (UIAlertAction)in
             
         }))
-        
-        //uncomment for iPad Support
-        //qualityAlert.popoverPresentationController?.sourceView = self.view
-        
+
         return qualityAlert
     }
     

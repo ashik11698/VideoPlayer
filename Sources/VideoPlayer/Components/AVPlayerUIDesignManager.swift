@@ -2,7 +2,8 @@
 //  AVPlayerUIDesignManager.swift
 //  AVPlayerDemo
 //
-//  Created by Mac on 5/7/23.
+//  Created by Md. Ashikur Rahman on 5/7/23.
+//  Copyright © 2023 BJIT Ltd. All rights reserved.
 //
 
 import UIKit
@@ -276,8 +277,6 @@ class AVPlayerUIDesignManager {
         playerView.addSubview(playerTime)
         
         let bottomConstraint = playerTime.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: -4)
-        
-        //let trailingConstraint = playerTime.trailingAnchor.constraint(equalTo: fullScreenButtonOutlet.leadingAnchor, constant: 10)
         
         let leadingConstraint = playerTime.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: 10)
         
