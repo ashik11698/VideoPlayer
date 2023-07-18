@@ -28,6 +28,8 @@ class AVPlayerUIDesignManager {
     var nextVideoButton = UIButton()
     var previousVideoButton = UIButton()
     
+    let liveString = NSLocalizedString("Live", comment: "")
+    
     init() {
         
     }
@@ -305,7 +307,7 @@ class AVPlayerUIDesignManager {
     
     func setPositionLiveStack() {
         
-        liveLabel.text = " Live"
+        liveLabel.text = " \(liveString))"
         liveLabel.textColor = UIColor.red
         
         liveRedCircleImage.image = UIImage(systemName: "circle.fill")
