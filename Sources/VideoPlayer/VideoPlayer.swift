@@ -124,13 +124,13 @@ public class AVPlayerManager: UIView {
     var navigationController: UINavigationController?
     
     /// PlayList
-    var playList = [Urls.m3u8Video1, Urls.m3u8Video2, Urls.m3u8Video3, Urls.m3u8Video4, Urls.m3u8Video5, Urls.m3u8Video6, Urls.BigBuckBunny]
+    var playList: [URL?]?
 
     
     static let shared = AVPlayerManager()
     
     
-    public init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false) {
+    public init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false, playList: [URL?] = [Urls.m3u8Video1, Urls.m3u8Video3, Urls.m3u8Video6, Urls.BigBuckBunny]) {
         if navigationController != nil {
             self.navigationController = navigationController
         }
@@ -140,6 +140,7 @@ public class AVPlayerManager: UIView {
         
         self.view = view
         self.isLiveStream = isLiveStream
+        self.playList = playList
 
         super.init(frame: .zero)
     }
@@ -224,7 +225,7 @@ public class AVPlayerManager: UIView {
         
         /// Play Video
         hidePlayerControllers()
-        let url = playList[0]
+        let url = playList?[0]
         playVideo(url: url)
         
         /// Navigation Controller Delegate
@@ -325,6 +326,10 @@ public class AVPlayerManager: UIView {
     @objc func playerDidFinishPlaying(note: NSNotification){
         
         previousVideoButton.isEnabled = true
+        
+        guard let playList = playList else {
+            return
+        }
         
         if selectedVideo < playList.count - 1 {
             selectedVideo += 1
@@ -902,7 +907,7 @@ public class AVPlayerManager: UIView {
         avPlayer?.replaceCurrentItem(with: nil)
         avPlayer = nil
         
-        let url = playList[selectedVideo]
+        let url = playList?[selectedVideo]
         playVideo(url: url)
         
     }
@@ -1103,6 +1108,10 @@ extension AVPlayerManager {
     
     
     @objc func playNextVideo() {
+        
+        guard let playList = playList else {
+            return
+        }
         
         if selectedVideo < playList.count - 1 {
             selectedVideo += 1
