@@ -29,6 +29,7 @@ class AVPlayerUIDesignManager {
     var previousVideoButton = UIButton()
     
     let liveString = NSLocalizedString("Live", comment: "")
+    let buttonHeightAndWidth: CGFloat = 45
     
     init() {
         
@@ -77,8 +78,8 @@ class AVPlayerUIDesignManager {
         
         playAndPauseButton.translatesAutoresizingMaskIntoConstraints = false
         
-        playAndPauseButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        playAndPauseButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        playAndPauseButton.widthAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
+        playAndPauseButton.heightAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
         
         playerView.addSubview(playAndPauseButton)
         
@@ -99,8 +100,8 @@ class AVPlayerUIDesignManager {
         
         forwardSkipButton.translatesAutoresizingMaskIntoConstraints = false
         
-        forwardSkipButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        forwardSkipButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        forwardSkipButton.widthAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
+        forwardSkipButton.heightAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
         
         playerView.addSubview(forwardSkipButton)
         
@@ -122,8 +123,8 @@ class AVPlayerUIDesignManager {
         
         backwardSkipButton.translatesAutoresizingMaskIntoConstraints = false
         
-        backwardSkipButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        backwardSkipButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        backwardSkipButton.widthAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
+        backwardSkipButton.heightAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
         
         playerView.addSubview(backwardSkipButton)
         
@@ -161,8 +162,8 @@ class AVPlayerUIDesignManager {
         
         miniPlayerButton.translatesAutoresizingMaskIntoConstraints = false
         
-        miniPlayerButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        miniPlayerButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        miniPlayerButton.widthAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
+        miniPlayerButton.heightAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
         
         playerView.addSubview(miniPlayerButton)
         
@@ -184,8 +185,8 @@ class AVPlayerUIDesignManager {
         
         settingButton.translatesAutoresizingMaskIntoConstraints = false
         
-        settingButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        settingButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        settingButton.widthAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
+        settingButton.heightAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
         
         playerView.addSubview(settingButton)
         
@@ -229,8 +230,8 @@ class AVPlayerUIDesignManager {
         
         fullScreenButton.translatesAutoresizingMaskIntoConstraints = false
         
-        fullScreenButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        fullScreenButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        fullScreenButton.widthAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
+        fullScreenButton.heightAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
         
         playerView.addSubview(fullScreenButton)
         
@@ -337,8 +338,8 @@ class AVPlayerUIDesignManager {
         
         nextVideoButton.translatesAutoresizingMaskIntoConstraints = false
         
-        nextVideoButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        nextVideoButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        nextVideoButton.widthAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
+        nextVideoButton.heightAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
         
         playerView.addSubview(nextVideoButton)
         
@@ -361,8 +362,8 @@ class AVPlayerUIDesignManager {
         
         previousVideoButton.translatesAutoresizingMaskIntoConstraints = false
         
-        previousVideoButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        previousVideoButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        previousVideoButton.widthAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
+        previousVideoButton.heightAnchor.constraint(equalToConstant: buttonHeightAndWidth).isActive = true
         
         playerView.addSubview(previousVideoButton)
         
