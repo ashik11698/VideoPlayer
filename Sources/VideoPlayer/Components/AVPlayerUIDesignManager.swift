@@ -31,6 +31,49 @@ class AVPlayerUIDesignManager {
     let liveString = NSLocalizedString("Live", comment: "")
     let buttonHeightAndWidth: CGFloat = 45
     
+    /// Constraints
+    let playerViewFrameX: CGFloat = 10
+    let playerViewFrameYPadding: CGFloat = 10
+    let playerViewFrameWidthPadding: CGFloat = 20
+    let playerViewFrameHeightPadding: CGFloat = 20
+    let forwardSkipButtonLeadingConstraint: CGFloat = 40
+    let backwardSkipButtonTrailingConstraint: CGFloat = -40
+    let miniPlayerButtonTopConstraint: CGFloat = 15
+    let miniPlayerButtonLeadingConstraint: CGFloat = 15
+    let settingsButtonTopConstraint: CGFloat = 15
+    let settingsButtonTrailingConstraint: CGFloat = -15
+    let progressViewBottomConstraint: CGFloat = -15
+    let progressViewLeadingConstraint: CGFloat = 0
+    let progressViewTrailingConstraint: CGFloat = 0
+    let fullScreenButtonBottomConstraint: CGFloat = -15
+    let fullScreenButtonTrailingConstraint: CGFloat = -15
+    let sliderBottomConstraint: CGFloat = -15
+    let sliderTrailingConstraint: CGFloat = -10
+    let sliderLeadingConstraint: CGFloat = 10
+    let playerTimeBottomConstraint: CGFloat = -4
+    let playerTimeLeadingConstraint: CGFloat = 10
+    let playerTotalDurationBottomConstraint: CGFloat = -4
+    let playerTotalDurationLeadingConstraint: CGFloat = 4
+    let liveStackBottomConstraint: CGFloat = -10
+    let liveStackLeadingConstraint: CGFloat = 15
+    let nextVideoButtonTopConstraint: CGFloat = 15
+    let nextVideoTrailingConstraint: CGFloat = 10
+    let previousVideoButtonTopConstraint: CGFloat = 15
+    let previousVideoButtonTrailingConstraint: CGFloat = 10
+    
+    /// System Image
+    let playAndPauseButtonSystemImage = "pause.fill"
+    let forwardSkipButtonSystemImage = "forward.fill"
+    let backwardSkipButtonSystemImage = "forward.fill"
+    let miniPlayerButtonSystemImage = "chevron.down"
+    let settingsButtonSystemImage = "ellipsis"
+    let fullScreenButtonSystemImage = "arrow.up.left.and.arrow.down.right"
+    let liveRedCircleSystemImage = "circle.fill"
+    let nextVideoButtonSystemImage = "forward.end"
+    let previousVideoButtonSystemImage = "backward.end"
+    
+  
+
     init() {
         
     }
@@ -64,8 +107,8 @@ class AVPlayerUIDesignManager {
         playerView.translatesAutoresizingMaskIntoConstraints = true
         
         if let topLayoutGuideHeight = navigationController?.navigationBar.frame.maxY {
-            let y = topLayoutGuideHeight + 10
-            playerView.frame = CGRect(x: 10, y: y, width: view.bounds.width - 20, height: view.bounds.height/3 - 20)
+            let y = topLayoutGuideHeight + playerViewFrameYPadding
+            playerView.frame = CGRect(x: playerViewFrameX, y: y, width: view.bounds.width - playerViewFrameWidthPadding, height: view.bounds.height/3 - playerViewFrameHeightPadding)
         }
         
     }
@@ -73,7 +116,7 @@ class AVPlayerUIDesignManager {
     
     func setPositionPlayAndPauseButton() -> UIButton {
         
-        playAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        playAndPauseButton.setImage(UIImage(systemName: playAndPauseButtonSystemImage), for: .normal)
         playAndPauseButton.tintColor = UIColor.white
         
         playAndPauseButton.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +138,7 @@ class AVPlayerUIDesignManager {
     
     func setPositionForwardSkipButton() -> UIButton {
         
-        forwardSkipButton.setImage(UIImage(systemName: "forward.fill"), for: .normal)
+        forwardSkipButton.setImage(UIImage(systemName: forwardSkipButtonSystemImage), for: .normal)
         forwardSkipButton.tintColor = UIColor.white
         
         forwardSkipButton.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +150,7 @@ class AVPlayerUIDesignManager {
         
         let centerYConstraint = forwardSkipButton.centerYAnchor.constraint(equalTo: playerView.centerYAnchor)
         
-        let leadingConstraint = forwardSkipButton.leadingAnchor.constraint(equalTo: playAndPauseButton.trailingAnchor, constant: 40)
+        let leadingConstraint = forwardSkipButton.leadingAnchor.constraint(equalTo: playAndPauseButton.trailingAnchor, constant: forwardSkipButtonLeadingConstraint)
         
         NSLayoutConstraint.activate([centerYConstraint, leadingConstraint])
         
@@ -118,7 +161,7 @@ class AVPlayerUIDesignManager {
     
     func setPositionBackwardSkipButton() -> UIButton {
         
-        backwardSkipButton.setImage(UIImage(systemName: "backward.fill"), for: .normal)
+        backwardSkipButton.setImage(UIImage(systemName: backwardSkipButtonSystemImage), for: .normal)
         backwardSkipButton.tintColor = UIColor.white
         
         backwardSkipButton.translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +173,7 @@ class AVPlayerUIDesignManager {
         
         let centerYConstraint = backwardSkipButton.centerYAnchor.constraint(equalTo: playerView.centerYAnchor)
         
-        let trailingConstraint = backwardSkipButton.trailingAnchor.constraint(equalTo: playAndPauseButton.leadingAnchor, constant: -40)
+        let trailingConstraint = backwardSkipButton.trailingAnchor.constraint(equalTo: playAndPauseButton.leadingAnchor, constant: backwardSkipButtonTrailingConstraint)
         
         NSLayoutConstraint.activate([centerYConstraint, trailingConstraint])
         
@@ -157,7 +200,7 @@ class AVPlayerUIDesignManager {
     
     func setPositionMiniPlayerButtonOutlet() -> UIButton {
         
-        miniPlayerButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        miniPlayerButton.setImage(UIImage(systemName: miniPlayerButtonSystemImage), for: .normal)
         miniPlayerButton.tintColor = UIColor.white
         
         miniPlayerButton.translatesAutoresizingMaskIntoConstraints = false
@@ -167,9 +210,9 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(miniPlayerButton)
         
-        let topConstraint = miniPlayerButton.topAnchor.constraint(equalTo: playerView.topAnchor, constant: 15)
+        let topConstraint = miniPlayerButton.topAnchor.constraint(equalTo: playerView.topAnchor, constant: miniPlayerButtonTopConstraint)
         
-        let leadingConstraint = miniPlayerButton.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: 15)
+        let leadingConstraint = miniPlayerButton.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: miniPlayerButtonLeadingConstraint)
         
         NSLayoutConstraint.activate([topConstraint, leadingConstraint])
         
@@ -180,7 +223,7 @@ class AVPlayerUIDesignManager {
     
     func setPositionSettingButtonOutlet() -> UIButton {
         
-        settingButton.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        settingButton.setImage(UIImage(systemName: settingsButtonSystemImage), for: .normal)
         settingButton.tintColor = UIColor.white
         
         settingButton.translatesAutoresizingMaskIntoConstraints = false
@@ -190,9 +233,9 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(settingButton)
         
-        let topConstraint = settingButton.topAnchor.constraint(equalTo: playerView.topAnchor, constant: 15)
+        let topConstraint = settingButton.topAnchor.constraint(equalTo: playerView.topAnchor, constant: settingsButtonTopConstraint)
         
-        let trailingConstraint = settingButton.trailingAnchor.constraint(equalTo: playerView.trailingAnchor, constant: -15)
+        let trailingConstraint = settingButton.trailingAnchor.constraint(equalTo: playerView.trailingAnchor, constant: settingsButtonTrailingConstraint)
         
         NSLayoutConstraint.activate([topConstraint, trailingConstraint])
         
@@ -211,11 +254,11 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(progressView)
         
-        let bottomConstraint = progressView.bottomAnchor.constraint(equalTo: playerView.bottomAnchor, constant: -15)
+        let bottomConstraint = progressView.bottomAnchor.constraint(equalTo: playerView.bottomAnchor, constant: progressViewBottomConstraint)
         
-        let leadingConstraint = progressView.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: 0)
+        let leadingConstraint = progressView.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: progressViewLeadingConstraint)
         
-        let trailingConstraint = progressView.trailingAnchor.constraint(equalTo: playerView.trailingAnchor, constant: 0)
+        let trailingConstraint = progressView.trailingAnchor.constraint(equalTo: playerView.trailingAnchor, constant: progressViewTrailingConstraint)
         
         NSLayoutConstraint.activate([bottomConstraint, leadingConstraint, trailingConstraint])
         
@@ -224,7 +267,7 @@ class AVPlayerUIDesignManager {
     
     func setPositionFullScreenButtonOutlet(isLiveStream: Bool) -> UIButton {
         
-        fullScreenButton.setImage(UIImage(systemName: "arrow.up.left.and.arrow.down.right"), for: .normal)
+        fullScreenButton.setImage(UIImage(systemName: fullScreenButtonSystemImage), for: .normal)
         
         fullScreenButton.tintColor = UIColor.red
         
@@ -236,13 +279,13 @@ class AVPlayerUIDesignManager {
         playerView.addSubview(fullScreenButton)
         
         if isLiveStream {
-            fullScreenButton.bottomAnchor.constraint(equalTo: progressView.bottomAnchor, constant: -15).isActive = true
+            fullScreenButton.bottomAnchor.constraint(equalTo: progressView.bottomAnchor, constant: fullScreenButtonBottomConstraint).isActive = true
         }
         else {
-            fullScreenButton.bottomAnchor.constraint(equalTo: playerView.bottomAnchor, constant: -15).isActive = true
+            fullScreenButton.bottomAnchor.constraint(equalTo: playerView.bottomAnchor, constant: fullScreenButtonBottomConstraint).isActive = true
         }
 
-        fullScreenButton.trailingAnchor.constraint(equalTo: playerView.trailingAnchor, constant: -15).isActive = true
+        fullScreenButton.trailingAnchor.constraint(equalTo: playerView.trailingAnchor, constant: fullScreenButtonTrailingConstraint).isActive = true
         
         return fullScreenButton
         
@@ -259,11 +302,11 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(slider)
         
-        let bottomConstraint = slider.bottomAnchor.constraint(equalTo: playerView.bottomAnchor, constant: -15)
+        let bottomConstraint = slider.bottomAnchor.constraint(equalTo: playerView.bottomAnchor, constant: sliderBottomConstraint)
 
-        let trailingConstraint = slider.trailingAnchor.constraint(equalTo: fullScreenButton.leadingAnchor, constant: -10)
+        let trailingConstraint = slider.trailingAnchor.constraint(equalTo: fullScreenButton.leadingAnchor, constant: sliderTrailingConstraint)
 
-        let leadingConstraint = slider.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: 10)
+        let leadingConstraint = slider.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: sliderLeadingConstraint)
         
         NSLayoutConstraint.activate([bottomConstraint, trailingConstraint, leadingConstraint])
         
@@ -279,9 +322,9 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(playerTime)
         
-        let bottomConstraint = playerTime.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: -4)
+        let bottomConstraint = playerTime.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: playerTimeBottomConstraint)
         
-        let leadingConstraint = playerTime.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: 10)
+        let leadingConstraint = playerTime.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: playerTimeLeadingConstraint)
         
         NSLayoutConstraint.activate([bottomConstraint, leadingConstraint])
         
@@ -297,9 +340,9 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(playerTotalDuration)
         
-        let bottomConstraint = playerTotalDuration.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: -4)
+        let bottomConstraint = playerTotalDuration.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: playerTotalDurationBottomConstraint)
         
-        let leadingConstraint = playerTotalDuration.leadingAnchor.constraint(equalTo: playerTime.trailingAnchor, constant: 4)
+        let leadingConstraint = playerTotalDuration.leadingAnchor.constraint(equalTo: playerTime.trailingAnchor, constant: playerTotalDurationLeadingConstraint)
         
         NSLayoutConstraint.activate([bottomConstraint, leadingConstraint])
         
@@ -311,7 +354,7 @@ class AVPlayerUIDesignManager {
         liveLabel.text = " \(liveString)"
         liveLabel.textColor = UIColor.red
         
-        liveRedCircleImage.image = UIImage(systemName: "circle.fill")
+        liveRedCircleImage.image = UIImage(systemName: liveRedCircleSystemImage)
         liveRedCircleImage.tintColor = UIColor.red
         
         liveStack.addArrangedSubview(liveRedCircleImage)
@@ -321,9 +364,9 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(liveStack)
         
-        let bottomConstraint = liveStack.bottomAnchor.constraint(equalTo: progressView.topAnchor, constant: -10)
+        let bottomConstraint = liveStack.bottomAnchor.constraint(equalTo: progressView.topAnchor, constant: liveStackBottomConstraint)
         
-        let leadingConstraint = liveStack.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: 15)
+        let leadingConstraint = liveStack.leadingAnchor.constraint(equalTo: playerView.leadingAnchor, constant: liveStackLeadingConstraint)
         
         NSLayoutConstraint.activate([bottomConstraint, leadingConstraint])
         
@@ -333,7 +376,7 @@ class AVPlayerUIDesignManager {
     /// Set Position For the Next Video Button
     func setPositionNextVideoButton() -> UIButton {
         
-        nextVideoButton.setImage(UIImage(systemName: "forward.end"), for: .normal)
+        nextVideoButton.setImage(UIImage(systemName: nextVideoButtonSystemImage), for: .normal)
         nextVideoButton.tintColor = UIColor.white
         
         nextVideoButton.translatesAutoresizingMaskIntoConstraints = false
@@ -343,9 +386,9 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(nextVideoButton)
         
-        let topConstraint = nextVideoButton.topAnchor.constraint(equalTo: playerView.topAnchor, constant: 15)
+        let topConstraint = nextVideoButton.topAnchor.constraint(equalTo: playerView.topAnchor, constant: nextVideoButtonTopConstraint)
 
-        let trailingConstraint = nextVideoButton.trailingAnchor.constraint(equalTo: settingButton.leadingAnchor, constant: 10)
+        let trailingConstraint = nextVideoButton.trailingAnchor.constraint(equalTo: settingButton.leadingAnchor, constant: nextVideoTrailingConstraint)
         
         NSLayoutConstraint.activate([topConstraint, trailingConstraint])
         
@@ -357,7 +400,7 @@ class AVPlayerUIDesignManager {
     /// Set Position For the previous Video Button
     func setPositionPreviousVideoButton() -> UIButton {
 
-        previousVideoButton.setImage(UIImage(systemName: "backward.end"), for: .normal)
+        previousVideoButton.setImage(UIImage(systemName: previousVideoButtonSystemImage), for: .normal)
         previousVideoButton.tintColor = UIColor.white
         
         previousVideoButton.translatesAutoresizingMaskIntoConstraints = false
@@ -367,9 +410,9 @@ class AVPlayerUIDesignManager {
         
         playerView.addSubview(previousVideoButton)
         
-        let topConstraint = previousVideoButton.topAnchor.constraint(equalTo: playerView.topAnchor, constant: 15)
+        let topConstraint = previousVideoButton.topAnchor.constraint(equalTo: playerView.topAnchor, constant: previousVideoButtonTopConstraint)
         
-        let trailingConstraint = previousVideoButton.trailingAnchor.constraint(equalTo: nextVideoButton.leadingAnchor, constant: 10)
+        let trailingConstraint = previousVideoButton.trailingAnchor.constraint(equalTo: nextVideoButton.leadingAnchor, constant: previousVideoButtonTrailingConstraint)
         
         NSLayoutConstraint.activate([topConstraint, trailingConstraint])
         
