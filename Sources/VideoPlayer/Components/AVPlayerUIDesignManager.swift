@@ -38,9 +38,9 @@ class AVPlayerUIDesignManager {
     let playerViewFrameHeightPadding: CGFloat = 20
     let forwardSkipButtonLeadingConstraint: CGFloat = 40
     let backwardSkipButtonTrailingConstraint: CGFloat = -40
-    let miniPlayerButtonTopConstraint: CGFloat = 15
+    let miniPlayerButtonTopConstraint: CGFloat = 0
     let miniPlayerButtonLeadingConstraint: CGFloat = 15
-    let settingsButtonTopConstraint: CGFloat = 15
+    let settingsButtonTopConstraint: CGFloat = 0
     let settingsButtonTrailingConstraint: CGFloat = -15
     let progressViewBottomConstraint: CGFloat = -15
     let progressViewLeadingConstraint: CGFloat = 0
@@ -56,9 +56,9 @@ class AVPlayerUIDesignManager {
     let playerTotalDurationLeadingConstraint: CGFloat = 4
     let liveStackBottomConstraint: CGFloat = -10
     let liveStackLeadingConstraint: CGFloat = 15
-    let nextVideoButtonTopConstraint: CGFloat = 15
+    let nextVideoButtonTopConstraint: CGFloat = 0
     let nextVideoTrailingConstraint: CGFloat = 10
-    let previousVideoButtonTopConstraint: CGFloat = 15
+    let previousVideoButtonTopConstraint: CGFloat = 0
     let previousVideoButtonTrailingConstraint: CGFloat = 10
     
     /// System Image
