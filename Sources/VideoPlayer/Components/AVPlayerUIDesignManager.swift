@@ -308,7 +308,7 @@ class AVPlayerUIDesignManager {
     
     func setPositionLiveStack() {
         
-        liveLabel.text = " \(liveString))"
+        liveLabel.text = " \(liveString)"
         liveLabel.textColor = UIColor.red
         
         liveRedCircleImage.image = UIImage(systemName: "circle.fill")
