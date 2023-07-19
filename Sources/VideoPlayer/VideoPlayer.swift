@@ -124,6 +124,14 @@ public class AVPlayerManager: UIView {
     var playList: [URL?]?
 
     
+    /// System Image
+    let miniPlayerPlayAndPauseButtonSystemImage = "pause"
+    let miniPlayerCrossButtonSystemImage = "xmark"
+    let fullScreenButtonPortraitSystemImage = "arrow.up.left.and.arrow.down.right"
+    let fullScreenButtonLandscapeSystemImage = "arrow.down.right.and.arrow.up.left"
+    let playButtonSystemImage = "play.fill"
+    let pauseButtonSystemImage = "pause.fill"
+    
     static let shared = AVPlayerManager()
     
     
@@ -193,13 +201,13 @@ public class AVPlayerManager: UIView {
         self.miniPlayerPlayAndPauseButton = Utils.shared.createButton(
             tintColor: UIColor.black,
             title: "",
-            imageName: "pause")
+            imageName: miniPlayerPlayAndPauseButtonSystemImage)
         
         /// Create Cross Button For MiniPlayer
         self.crossButton = Utils.shared.createButton(
             tintColor: UIColor.black,
             title: "",
-            imageName: "xmark")
+            imageName: miniPlayerCrossButtonSystemImage)
         
         hidePlayerControllers()
         
@@ -344,9 +352,9 @@ public class AVPlayerManager: UIView {
     /// Executes this function when the app moves to background
     @objc func appMovedToBackground() {
         
-        playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        playAndPauseButton.setImage(UIImage(systemName: playButtonSystemImage), for: .normal)
         
-        miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: playButtonSystemImage), for: .normal)
         
         isPause = !isPause
     }
@@ -484,7 +492,7 @@ public class AVPlayerManager: UIView {
         }
         
         /// Initially the Pause button will be Visisble
-        playAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        playAndPauseButton.setImage(UIImage(systemName: pauseButtonSystemImage), for: .normal)
         
         guard let url = url else {
             debugPrint("Video doesn't exist or format issue. Please make sure the correct name of the video and format.")
@@ -576,7 +584,7 @@ public class AVPlayerManager: UIView {
     /// This functions calls, when we need to show the video in portrait mode. This function rotates playerLayer and playAndPauseBtnOutlet 360 degree to set the video straight.
     func showVideoInPortrait() {
         
-        fullScreenButton.setImage(UIImage(systemName: "arrow.up.left.and.arrow.down.right"), for: .normal)
+        fullScreenButton.setImage(UIImage(systemName: fullScreenButtonPortraitSystemImage), for: .normal)
         
         if isRotate {
             playerView.transform = CGAffineTransform(rotationAngle: Utils.shared.degreeToRadian(360))
@@ -595,7 +603,7 @@ public class AVPlayerManager: UIView {
     /// This function calls when the device is in landscape mode. It hides all the button and UIView and set the playerViewframe to the main view (To cover entire screen).
     func showVideoInLandscape() {
         
-        fullScreenButton.setImage(UIImage(systemName: "arrow.down.right.and.arrow.up.left"), for: .normal)
+        fullScreenButton.setImage(UIImage(systemName: fullScreenButtonLandscapeSystemImage), for: .normal)
         
         if isRotate {
             playerView.transform = CGAffineTransform(rotationAngle: Utils.shared.degreeToRadian(360))
@@ -791,14 +799,14 @@ public class AVPlayerManager: UIView {
         if !isPause {
             avPlayer?.pause()
             
-            playAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            playAndPauseButton.setImage(UIImage(systemName: playButtonSystemImage), for: .normal)
+            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: playButtonSystemImage), for: .normal)
         }
         else {
             avPlayer?.play()
             
-            playAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            playAndPauseButton.setImage(UIImage(systemName: pauseButtonSystemImage), for: .normal)
+            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: pauseButtonSystemImage), for: .normal)
         }
         
         isPause = !isPause
@@ -1087,14 +1095,14 @@ extension AVPlayerManager {
         if self.isRotate == false {
             navigationController?.isNavigationBarHidden = true
             enterFullScreen()
-            fullScreenButton.setImage(UIImage(systemName: "arrow.down.right.and.arrow.up.left"), for: .normal)
+            fullScreenButton.setImage(UIImage(systemName: fullScreenButtonLandscapeSystemImage), for: .normal)
             self.miniPlayerButton.isHidden = true
             self.hideMiniPlayerButtons()
         }
         else {
             navigationController?.isNavigationBarHidden = false
             ExitFullScreen()
-            fullScreenButton.setImage(UIImage(systemName: "arrow.up.left.and.arrow.down.right"), for: .normal)
+            fullScreenButton.setImage(UIImage(systemName: fullScreenButtonPortraitSystemImage), for: .normal)
         }
         
     }
