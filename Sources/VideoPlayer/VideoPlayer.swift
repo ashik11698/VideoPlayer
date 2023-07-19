@@ -497,8 +497,6 @@ public class AVPlayerManager: UIView {
         /// Buffer
         avPlayer?.addObserver(self, forKeyPath: "timeControlStatus", options: [.old, .new], context: nil)
         
-        configureSlider(color: UIColor.red)
-        
         self.playerView.layer.addSublayer(playerLayer)
         
         /// Set the frame of the player Layer according to the playerView bound
@@ -554,7 +552,11 @@ public class AVPlayerManager: UIView {
         preview.translatesAutoresizingMaskIntoConstraints = false
         preview.bottomAnchor.constraint(equalTo: self.slider.topAnchor).isActive = true
         preview.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        generateImages()
+        
+        if !isLiveStream {
+            configureSlider(color: UIColor.red)
+            generateImages()
+        }
         
         playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         
