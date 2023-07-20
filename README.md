@@ -13,6 +13,7 @@ This is a library of custom video player for iOS applications. This provides ser
     - [ ] Qaulity
     - [ ] Share
     - [ ] Report
+- [X] Repeat/Replay
 - [X] Play next Video
 - [X] Play previous Video
 - [X] Mini Player
@@ -38,6 +39,7 @@ This is a library of custom video player for iOS applications. This provides ser
 - [X] Preview
 - [X] Backward skipping 
 - [X] Forward skipping
+- [X] Repeat/Replay
 - [X] Play next Video
 - [X] Play previous Video
 - [X] Mini Player
