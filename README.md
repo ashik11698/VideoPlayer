@@ -1,6 +1,6 @@
 # VideoPlayer
 
-This is a library of custom video player for iOS devices. This provides services for both live stream and pre-recorded videos. 
+This is a library of custom video player for iOS applications. This provides services for both live stream and VOD. 
 
 ## Features:
 ### For Live Stream:
