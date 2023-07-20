@@ -72,7 +72,6 @@ class AVPlayerUIDesignManager {
     let nextVideoButtonSystemImage = "forward.end"
     let previousVideoButtonSystemImage = "backward.end"
     
-  
 
     init() {
         

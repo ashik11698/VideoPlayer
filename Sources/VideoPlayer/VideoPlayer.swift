@@ -87,6 +87,10 @@ public class AVPlayerManager: UIView {
     /// To Track the dragging state of slider
     var isSliderDragStart = false
     
+    /// track the finishing of the player
+    var isFinishedPlaying = false
+    
+    
     /// Store the position of selected Video
     var selectedVideo = 0
     
@@ -113,6 +117,12 @@ public class AVPlayerManager: UIView {
     
     /// For hiding button after a certain time (5 seconds)
     var workItem: DispatchWorkItem?
+    
+    /// For playing next video after 10 seconds
+    var WorkItemNextVideo: DispatchWorkItem?
+    
+    /// Timer
+    var timer = Timer()
     
     /// Main View
     var view = UIView()
@@ -328,23 +338,46 @@ public class AVPlayerManager: UIView {
     }
     
     
-    @objc func playerDidFinishPlaying(note: NSNotification){
+    @objc func playerDidFinishPlaying(note: NSNotification) {
         
-        previousVideoButton.isEnabled = true
+        isFinishedPlaying = true
+        playAndPauseButton.setImage(UIImage(systemName: "goforward"), for: .normal)
+        miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "goforward"), for: .normal)
+
+        var counter = 9
         
-        guard let playList = playList else {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { time in
+            self.playerTotalDuration.text = ""
+            self.playerTime.text = "Up next in \(counter)"
+            counter -= 1
+        }
+        
+        WorkItemNextVideo?.cancel()
+        
+        WorkItemNextVideo = DispatchWorkItem {
+            
+            self.previousVideoButton.isEnabled = true
+            
+            guard let playList = self.playList else {
+                return
+            }
+            
+            if self.selectedVideo < playList.count - 1 {
+                self.selectedVideo += 1
+                
+                self.playSelectedVideo(selectedVideo: self.selectedVideo)
+            }
+            
+            if self.selectedVideo == playList.count - 1 {
+                self.nextVideoButton.isEnabled = false
+            }
+        }
+        
+        guard let WorkItemNextVideo = WorkItemNextVideo else {
             return
         }
         
-        if selectedVideo < playList.count - 1 {
-            selectedVideo += 1
-            
-            playSelectedVideo(selectedVideo: selectedVideo)
-        }
-        
-        if selectedVideo == playList.count - 1 {
-            nextVideoButton.isEnabled = false
-        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10), execute: WorkItemNextVideo)
         
     }
     
@@ -482,6 +515,7 @@ public class AVPlayerManager: UIView {
         /// Remove playerLayer from its parent layer
         playerLayer.removeFromSuperlayer()
         playerLayer.player = nil
+        timer.invalidate()
         
         /// Audio: It helps to play sound even when phone is in the silent mode.
         do {
@@ -795,6 +829,20 @@ public class AVPlayerManager: UIView {
     // MARK: - Toggle Pause and Play Button
     /// Convert play button to pause button and vice versa
     func togglePauseAndPlay() {
+        
+        if isFinishedPlaying {
+            
+            WorkItemNextVideo?.cancel()
+            timer.invalidate()
+            
+            let startTime = CMTime(seconds: 0, preferredTimescale: 1)
+            avPlayer?.seek(to: startTime)
+            avPlayer?.play()
+            playAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            isFinishedPlaying = false
+            return
+        }
         
         if !isPause {
             avPlayer?.pause()
