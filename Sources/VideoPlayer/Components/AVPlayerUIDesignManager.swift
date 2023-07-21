@@ -64,7 +64,7 @@ class AVPlayerUIDesignManager {
     /// System Image
     let playAndPauseButtonSystemImage = "pause.fill"
     let forwardSkipButtonSystemImage = "forward.fill"
-    let backwardSkipButtonSystemImage = "forward.fill"
+    let backwardSkipButtonSystemImage = "backward.fill"
     let miniPlayerButtonSystemImage = "chevron.down"
     let settingsButtonSystemImage = "ellipsis"
     let fullScreenButtonSystemImage = "arrow.up.left.and.arrow.down.right"
