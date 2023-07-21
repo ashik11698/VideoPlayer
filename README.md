@@ -14,6 +14,7 @@ This is a library of custom video player for iOS applications. This provides ser
     - [ ] Share
     - [ ] Report
 - [X] Repeat/Replay
+- [X] Autoplay
 - [X] Play next Video
 - [X] Play previous Video
 - [X] Mini Player
@@ -40,6 +41,7 @@ This is a library of custom video player for iOS applications. This provides ser
 - [X] Backward skipping 
 - [X] Forward skipping
 - [X] Repeat/Replay
+- [X] Autoplay
 - [X] Play next Video
 - [X] Play previous Video
 - [X] Mini Player
@@ -74,16 +76,17 @@ initialize the AVPlayerManager with following parameters
 - navigationController: This is optional. If there isn't any navigationController, then pass nil instead of it.
 - view: Pass the view(UIView), where the player will be placed. 
 - isLiveStream: This is boolean. Pass 'true' if it is a live stream, else pass 'false' if it is pre-recorded video.
+- isAutoPlayOn: This is boolean. Pass 'true' to turn on autoPlay and pass 'false' to turn off autoPlay.
 - playList: This is a list of urls, which will be played by the player. This is optional. User can send their own playList [URL?]. Avoid this parameter if there is no playList, player will play the default playList in that case. 
 
 ```
-let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false)
+let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false, isAutoPlayOn: false)
 ```
 
 Or,
 
 ```
-let avPlayerManager = AVPlayerManager(navigationController: nil, view: view, isLiveStream: false)
+let avPlayerManager = AVPlayerManager(navigationController: nil, view: view, isLiveStream: false, isAutoPlayOn: true)
 ```
 
 Or,
@@ -91,7 +94,7 @@ Or,
 ```
 let playList = [Urls.m3u8Video1, Urls.m3u8Video2, Urls.m3u8Video3]
 
-let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false, playList: playList)
+let avPlayerManager = AVPlayerManager(navigationController: navigationController, view: view, isLiveStream: false, isAutoPlayOn: true, playList: playList)
 ```
 
 Add the initialized constant/variable as a subview of the view the player will be visible.
