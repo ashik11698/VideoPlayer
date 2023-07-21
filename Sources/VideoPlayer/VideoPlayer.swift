@@ -84,6 +84,9 @@ public class AVPlayerManager: UIView {
     /// Tracks whether live stream is on or off
     var isLiveStream = false
     
+    /// AutoPlay
+    var isAutoPlayOn = false
+    
     /// To Track the dragging state of slider
     var isSliderDragStart = false
     
@@ -145,7 +148,7 @@ public class AVPlayerManager: UIView {
     static let shared = AVPlayerManager()
     
     
-    public init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false, playList: [URL?] = [Urls.m3u8Video1, Urls.m3u8Video3, Urls.m3u8Video6, Urls.BigBuckBunny]) {
+    public init(navigationController: UINavigationController? = UINavigationController(), view: UIView = UIView(), isLiveStream: Bool = false, isAutoPlayOn: Bool = false, playList: [URL?] = [Urls.m3u8Video1, Urls.m3u8Video3, Urls.m3u8Video6, Urls.BigBuckBunny]) {
         if navigationController != nil {
             self.navigationController = navigationController
         }
@@ -155,6 +158,7 @@ public class AVPlayerManager: UIView {
         
         self.view = view
         self.isLiveStream = isLiveStream
+        self.isAutoPlayOn = isAutoPlayOn
         self.playList = playList
 
         super.init(frame: .zero)
@@ -344,32 +348,36 @@ public class AVPlayerManager: UIView {
         playAndPauseButton.setImage(UIImage(systemName: "goforward"), for: .normal)
         miniPlayerPlayAndPauseButton.setImage(UIImage(systemName: "goforward"), for: .normal)
 
-        var counter = 9
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { time in
-            self.playerTotalDuration.text = ""
-            self.playerTime.text = "Up next in \(counter)"
-            counter -= 1
+        if isAutoPlayOn {
+            var counter = 9
+            
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { time in
+                self.playerTotalDuration.text = ""
+                self.playerTime.text = "Up next in \(counter)"
+                counter -= 1
+            }
         }
         
         WorkItemNextVideo?.cancel()
         
-        WorkItemNextVideo = DispatchWorkItem {
-            
-            self.previousVideoButton.isEnabled = true
-            
-            guard let playList = self.playList else {
-                return
-            }
-            
-            if self.selectedVideo < playList.count - 1 {
-                self.selectedVideo += 1
+        if isAutoPlayOn {
+            WorkItemNextVideo = DispatchWorkItem {
                 
-                self.playSelectedVideo(selectedVideo: self.selectedVideo)
-            }
-            
-            if self.selectedVideo == playList.count - 1 {
-                self.nextVideoButton.isEnabled = false
+                self.previousVideoButton.isEnabled = true
+                
+                guard let playList = self.playList else {
+                    return
+                }
+                
+                if self.selectedVideo < playList.count - 1 {
+                    self.selectedVideo += 1
+                    
+                    self.playSelectedVideo(selectedVideo: self.selectedVideo)
+                }
+                
+                if self.selectedVideo == playList.count - 1 {
+                    self.nextVideoButton.isEnabled = false
+                }
             }
         }
         
