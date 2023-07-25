@@ -190,8 +190,8 @@ public class AVPlayerManager: UIView {
                 if connection == .satisfied && self.isFirstTimeRun == false {
                     let alert = ActionSheet.shared.alertMessage(title: "Internet", message: "Internet Connected")
                     UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-
                 }
+                
                 else if connection == .notSatisfied {
                     let alert = ActionSheet.shared.alertMessage(title: "Internet", message: "No Internet")
                     UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)

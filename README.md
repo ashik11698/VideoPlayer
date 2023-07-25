@@ -9,6 +9,7 @@ This is a library of custom video player for iOS applications. This provides ser
 - [X] Full screen mode using button
 - [X] Full screen in landscape
 - [X] Buffer indicator
+- [X] Check internet connection
 - [X] Settings: 
     - [ ] Qaulity
     - [ ] Share
@@ -29,6 +30,7 @@ This is a library of custom video player for iOS applications. This provides ser
 - [X] Full screen mode using button
 - [X] Full screen in landscape
 - [X] Buffer indicator
+- [X] Check internet connection
 - [X] Settings: 
     - [X] Speed
     - [ ] Qaulity
@@ -138,5 +140,6 @@ avPlayerManager.setUpPlayer()
 
 ## Open Source Used:
 
-- SeekPreview
-- github Link: https://github.com/Enricoza/SeekPreview.git
+- SeekPreview (github Link: https://github.com/Enricoza/SeekPreview.git)
+- Reachability (github Link: https://github.com/ashleymills/Reachability.swift)
+
