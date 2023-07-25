@@ -20,6 +20,11 @@ enum Orientation: String {
     case unknown = "Unknown"
 }
 
+enum InternetConnection {
+    case satisfied
+    case notSatisfied
+}
+
 class Utils {
     
     static let shared = Utils()

@@ -93,6 +93,9 @@ public class AVPlayerManager: UIView {
     /// track the finishing of the player
     var isFinishedPlaying = false
     
+    /// Track if app runs for the first time
+    var isFirstTimeRun = true
+    
     
     /// Store the position of selected Video
     var selectedVideo = 0
@@ -179,8 +182,22 @@ public class AVPlayerManager: UIView {
             // Perform your cleanup or actions here
             stopPlayerAndPlayerObserver()
             NotificationCenter.default.removeObserver(self)
+            NetworkManager.shared.reachability.stopNotifier()
+            
         } else {
             // UIView is being added to the window or shown
+            NetworkManager.shared.MonitorConnectionReachability { connection in
+                if connection == .satisfied && self.isFirstTimeRun == false {
+                    let alert = ActionSheet.shared.alertMessage(title: "Internet", message: "Internet Connected")
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+
+                }
+                else if connection == .notSatisfied {
+                    let alert = ActionSheet.shared.alertMessage(title: "Internet", message: "No Internet")
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                    self.isFirstTimeRun = false
+                }
+            }
         }
     }
     

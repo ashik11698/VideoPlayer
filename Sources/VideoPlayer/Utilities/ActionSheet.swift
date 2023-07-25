@@ -98,4 +98,16 @@ class ActionSheet {
         return qualityAlert
     }
     
+    
+    /// Alert Function
+    func alertMessage(title: String, message: String) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (_) in
+            // handle the OK button action
+        }
+        
+        alertController.addAction(action)
+        return alertController
+    }
+    
 }
